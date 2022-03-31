@@ -1,4 +1,4 @@
 # WeatherConverter
 The simple WeatherConverter program in Java (Swing GUI Forms)
 
-برنامه ساده به زبان جاوا که با کمک Swing GUI Forms و JFrame Form نوشتم.
+برنامۀ سادۀ مبدل هوا که به زبان جاوا و با کمک Swing GUI Forms و JFrame Form نوشتم.
