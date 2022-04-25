@@ -1,4 +1,4 @@
-import java.util.*;
+
 public class NewConvertor extends javax.swing.JFrame {
 
     /**
@@ -19,7 +19,6 @@ public class NewConvertor extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         Button1 = new javax.swing.JRadioButton();
         Button2 = new javax.swing.JRadioButton();
         Button3 = new javax.swing.JRadioButton();
@@ -29,6 +28,7 @@ public class NewConvertor extends javax.swing.JFrame {
         Fahrenheit = new javax.swing.JLabel();
         Kelvin = new javax.swing.JLabel();
         Image = new javax.swing.JLabel();
+        Spn1 = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Weather Convertor");
@@ -52,21 +52,6 @@ public class NewConvertor extends javax.swing.JFrame {
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel1.setMaximumSize(new java.awt.Dimension(200, 50));
         jLabel1.setMinimumSize(new java.awt.Dimension(200, 50));
-
-        jFormattedTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 204)));
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0"))));
-        jFormattedTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jFormattedTextField1.setCaretColor(new java.awt.Color(0, 0, 204));
-        jFormattedTextField1.setFont(new java.awt.Font("Heebo", 0, 14)); // NOI18N
-        jFormattedTextField1.setMaximumSize(new java.awt.Dimension(100, 30));
-        jFormattedTextField1.setSelectedTextColor(new java.awt.Color(255, 255, 255));
-        jFormattedTextField1.setSelectionColor(new java.awt.Color(0, 0, 0));
-        jFormattedTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jFormattedTextField1KeyReleased(evt);
-            }
-        });
 
         Button1.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(Button1);
@@ -133,6 +118,15 @@ public class NewConvertor extends javax.swing.JFrame {
         Image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/1.jpg"))); // NOI18N
         Image.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        Spn1.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        Spn1.setModel(new javax.swing.SpinnerNumberModel());
+        Spn1.setEditor(new javax.swing.JSpinner.NumberEditor(Spn1, ""));
+        Spn1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                Spn1StateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,11 +136,11 @@ public class NewConvertor extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Button1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Button2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Button3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(Spn1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,9 +164,9 @@ public class NewConvertor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Spn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -193,10 +187,10 @@ public class NewConvertor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFormattedTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField1KeyReleased
+    private void Spn1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Spn1StateChanged
         if (Button1.isSelected())
         {
-            FarenheitPrint();
+            FahrenheitPrint();
         }
         else if (Button2.isSelected())
         {
@@ -206,14 +200,15 @@ public class NewConvertor extends javax.swing.JFrame {
         {
             KelvinPrint();
         }
-    }//GEN-LAST:event_jFormattedTextField1KeyReleased
-    public void FarenheitPrint()
+    }//GEN-LAST:event_Spn1StateChanged
+    
+    protected void FahrenheitPrint()
     {
         String num;
         float input , far1 = 0, far2 = 0, far3 = 0;
         try
         {
-            num = jFormattedTextField1.getText();
+            num = String.valueOf(Spn1.getValue());
                 input = Float.parseFloat(num);
             far1    = input;                                    // farnheit to farnheit
             far2    = (float) ((input - 32) * 1.8);             // farnheit to celsius
@@ -225,13 +220,14 @@ public class NewConvertor extends javax.swing.JFrame {
         Celsius.setText("Celsius= " + far2 + " C°");
         Kelvin.setText("Kelvin= " + far3 + " K");
     }
-    public void CelsiusPrint()
+    
+    protected void CelsiusPrint()
     {
         String num;
         float input , cel1 = 0 , cel2 = 0 , cel3 = 0;
         try
         {
-            num = jFormattedTextField1.getText();
+            num = String.valueOf(Spn1.getValue());
                 input = Float.parseFloat(num);
             cel1    = (float) ((input * 1.8) +32);      // celsius to farnheit
             cel2    = input;                            // celsius  to celsius
@@ -244,13 +240,14 @@ public class NewConvertor extends javax.swing.JFrame {
         Celsius.setText("Celsius= " + cel2 + " C°");
         Kelvin.setText("Kelvin= " + cel3 + " K");
     }
-    public void KelvinPrint()
+    
+    protected void KelvinPrint()
     {
         String num;
         float input , kel1 = 0 , kel2 = 0 , kel3 = 0;
         try
         {
-            num = jFormattedTextField1.getText();
+            num = String.valueOf(Spn1.getValue());
                 input = Float.parseFloat(num);
             kel1    = (float) ((input - 273.15) * 1.8 + 32);    // kelvin  to farnheit
             kel2    = (float) ((input - 273.15));               // kelvin  to celsius
@@ -307,8 +304,8 @@ public class NewConvertor extends javax.swing.JFrame {
     private javax.swing.JLabel Fahrenheit;
     private javax.swing.JLabel Image;
     private javax.swing.JLabel Kelvin;
+    private javax.swing.JSpinner Spn1;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
